@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  $blue: blue;
+  $red: red;
+  $orange: orange;
+  $margin: 10px 0px;
+  
+  .display-center {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .paperStyle {
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 10px !important;
+    width: auto;
+    max-width: 380px;
+    min-width: 100px;
+  }
+  
+  .txtStyle {
+    color: $blue;
+    font-size: 28px;
+  }
+  
+  .txtStyle2 {
+    color: $red;
+  }
+  
+  .txtStyle3 {
+    color: $orange;
+  }
+  
+  .tfStyle {
+    margin: $margin !important;
+  }
+  
+  .typoStyle {
+    margin: $margin !important;
+  }
+  
+  .buttonStyle {
+    margin: 15px 0px !important;
+  }
