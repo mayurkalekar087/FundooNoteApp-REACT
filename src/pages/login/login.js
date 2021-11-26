@@ -9,8 +9,16 @@ import {
   import "./login.scss";
   import FormControlLabel from "@material-ui/core/FormControlLabel";
   import Checkbox from "@material-ui/core/Checkbox";
+  import { Formik, Form, Field, ErrorMessage } from "formik";
+  import * as Yup from "yup";
   
   const Login = () => {
+    const validationSchema = Yup.object().shape({
+      Email: Yup.string()
+        .email("Please Enter valid Email !!")
+        .required("Email is required !!"),
+      password: Yup.string().required("Required"),
+    });
     return (
       <Grid className="display-center">
         <Paper elevation={8} className="paperStyle">
@@ -28,30 +36,53 @@ import {
             </h2>
             <h2>Sign In</h2>
           </Grid>
-          <Grid className="tfStyle">
-            <TextField label="Email" variant="outlined" fullWidth required />
-          </Grid>
-          <TextField
-            label="Password"
-            variant="outlined"
-            type="password"
-            fullWidth
-            required
-          />
-  
-          <FormControlLabel
-            control={<Checkbox name="checkedB" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            className="buttonStyle"
-            fullWidth
+          <Formik
+          initialValues={{ Email: "", Password: "" }}
+          onSubmit={(value, props) => {
+            console.log(value);
+            console.log(props);
+          }}
+          validationSchema={validationSchema}
           >
-            Sign in
-          </Button>
+          {(props) => (
+            <Form>
+              <Field
+                as={TextField}
+                label="Email"
+                name="Email"
+                variant="outlined"
+                fullWidth
+                required
+                className="tfStyle"
+                helperText={<ErrorMessage name="Email" />}
+              />
+
+              <Field
+                as={TextField}
+                label="Password"
+                name="Password"
+                variant="outlined"
+                type="password"
+                fullWidth
+                required
+              />
+              <Field
+                as={FormControlLabel}
+                control={<Checkbox name="checkedB" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                className="buttonStyle"
+                fullWidth
+              >
+                Sign in
+              </Button>
+            </Form>
+          )}
+        </Formik>
           <Typography className="typoStyle">
             <Link href="#">Forgot password</Link>
           </Typography>
