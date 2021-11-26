@@ -5,6 +5,7 @@ import "./login.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";  
+import Title from "..//login/title";
 
   const Login = () => {
     const initialValues = {
@@ -32,17 +33,7 @@ import { Link } from "react-router-dom";
       <Grid className="display-center">
         <Paper elevation={8} className="paperStyle">
           <Grid align="center">
-            <h2>
-              <span className="txtStyle">F</span>
-              <span className="txtStyle2">u</span>
-              <span className="txtStyle">n</span>
-              <span className="txtStyle3">d</span>
-              <span className="txtStyle">o</span>
-              <span className="txtStyle2"> N</span>
-              <span className="txtStyle3">o</span>
-              <span className="txtStyle">t</span>
-              <span className="txtStyle2">e</span>
-            </h2>
+          <Title />
             <h2>Sign In</h2>
           </Grid>
           <Formik
