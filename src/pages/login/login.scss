@@ -1,12 +1,7 @@
+@import "..//..//global/variable.scss"; 
 * {
     box-sizing: border-box;
   }
-  
-  $blue: blue;
-  $red: red;
-  $orange: orange;
-  $margin: 10px 0px;
-  
   .display-center {
     min-height: 100vh;
     display: flex;
