@@ -47,3 +47,11 @@
   .buttonStyle {
     margin: 15px 0px !important;
   }
+  .error {
+    color: $red !important;
+    position: absolute !important;
+  }
+  
+  .MuiFormHelperText-root {
+    color: $red !important;
+  }

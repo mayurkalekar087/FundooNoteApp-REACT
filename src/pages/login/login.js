@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import {
     Grid,
     Paper,
@@ -7,17 +8,30 @@ import {
     Link,
   } from "@material-ui/core";
   import "./login.scss";
-  import FormControlLabel from "@material-ui/core/FormControlLabel";
-  import Checkbox from "@material-ui/core/Checkbox";
   import { Formik, Form, Field, ErrorMessage } from "formik";
   import * as Yup from "yup";
   
   const Login = () => {
+    const initialValues = {
+      Email: "",
+      Password: "",
+    };
+    const onSubmits = (values, props) => {
+      console.log(values);
+      console.log(props);
+      setTimeout(() => {
+        props.resetForm();
+        props.setSubmitting(false);
+      }, 2000);
+      console.log(props);
+    };
     const validationSchema = Yup.object().shape({
       Email: Yup.string()
         .email("Please Enter valid Email !!")
         .required("Email is required !!"),
-      password: Yup.string().required("Required"),
+        Password: Yup.string()
+        .min(6, "Password must be at least 6 characters")
+        .required("Password is required"),
     });
     return (
       <Grid className="display-center">
@@ -37,11 +51,10 @@ import {
             <h2>Sign In</h2>
           </Grid>
           <Formik
-          initialValues={{ Email: "", Password: "" }}
-          onSubmit={(value, props) => {
-            console.log(value);
-            console.log(props);
-          }}
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmits}
+          // eslint-disable-next-line
           validationSchema={validationSchema}
           >
           {(props) => (
@@ -52,7 +65,6 @@ import {
                 name="Email"
                 variant="outlined"
                 fullWidth
-                required
                 className="tfStyle"
                 helperText={<ErrorMessage name="Email" />}
               />
@@ -64,12 +76,7 @@ import {
                 variant="outlined"
                 type="password"
                 fullWidth
-                required
-              />
-              <Field
-                as={FormControlLabel}
-                control={<Checkbox name="checkedB" color="primary" />}
-                label="Remember me"
+                helperText={<ErrorMessage name="Password" />}
               />
               <Button
                 type="submit"
@@ -77,8 +84,9 @@ import {
                 variant="contained"
                 className="buttonStyle"
                 fullWidth
+                disabled={props.isSubmitting}
               >
-                Sign in
+                 {props.isSubmitting ? "Loading" : "Sign in"}
               </Button>
             </Form>
           )}
@@ -87,7 +95,6 @@ import {
             <Link href="#">Forgot password</Link>
           </Typography>
           <Typography>
-            {" "}
             Do you have an account ?
             <Link href="#">
               <span> Create account </span>
