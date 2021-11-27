@@ -5,7 +5,7 @@ import "./login.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";  
-import Title from "..//login/title";
+import Title from "../../component/title/title";
 
   const Login = () => {
     const initialValues = {
@@ -40,8 +40,6 @@ import Title from "..//login/title";
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmits}
-          // eslint-disable-next-line
-          validationSchema={validationSchema}
           >
           {(props) => (
             <Form>
@@ -54,7 +52,6 @@ import Title from "..//login/title";
                 className="tfStyle"
                 helperText={<ErrorMessage name="Email" />}
               />
-
               <Field
                 as={TextField}
                 label="Password"
@@ -82,7 +79,7 @@ import Title from "..//login/title";
           </Typography>
           <Typography>
           Create a new account ?
-          <Link to="/SignUp">
+          <Link to="/SignIn">
               <span> Create account </span>
             </Link>
           </Typography>
