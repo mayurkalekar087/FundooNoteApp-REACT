@@ -4,15 +4,37 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./forgotPassword.scss";
 import Title from "../../component/title/title";
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { forgot } from "../../services/api";
 
 const Forgot = () => {
   const initialValues = {
     Email: "",
   };
+  const history = useHistory();
 
   const onSubmits = (values, props) => {
     console.log(values);
-    console.log(props);
+    const data = {
+        email: values.Email,
+      };
+      forgot(data)
+        .then((res) => {
+          // alert("Data submitted");
+          setTimeout(() => {
+            props.resetForm();
+            history.push("#");
+          }, 2000);
+          toast.success("Email forgot password link sent succesfully ✔", {
+            position: "top-center",
+            autoClose: 2000,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   const validationSchema = Yup.object().shape({
@@ -60,6 +82,7 @@ const Forgot = () => {
           )}
         </Formik>
       </Paper>
+      <ToastContainer />
     </Grid>
   );
 };
