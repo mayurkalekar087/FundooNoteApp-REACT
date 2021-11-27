@@ -3,10 +3,11 @@ import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core";
 import "./signUp.scss";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import Title from "../../component/title/title";
-
+import { register } from "..//..//services/api";
 const SignUp = () => {
+    const history = useHistory();
   const initialValuesSignUp = {
     FirstName: "",
     LastName: "",
@@ -16,11 +17,21 @@ const SignUp = () => {
   };
   const onSubmitSignUP = (values, props) => {
     console.log(values);
-    setTimeout(() => {
-      props.resetForm();
-      props.setSubmitting(false);
-    }, 2000);
-  };
+    const userDetails = {
+        firstName: values.FirstName,
+        lastName: values.LastName,
+        email: values.Email,
+        password: values.Password,
+      };
+      register(userDetails)
+      .then((res) => {
+        alert("Data is submitted");
+        history.push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
   const validationSchemaSignUp = Yup.object().shape({
     FirstName: Yup.string()
       .min(3, "first Name is too short minimum 3 Char is required")
@@ -34,9 +45,6 @@ const SignUp = () => {
       Password: Yup.string()
       .min(8, "Password must be at least 6 characters")
       .required("Password is required"),
-      confirmPassword: Yup.string()
-      .oneOf([Yup.ref("Password")], "Password doesn't matched")
-      .required("Required"),
   });
   return (
     <Grid className="display-center">
