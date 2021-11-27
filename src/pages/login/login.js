@@ -90,7 +90,7 @@ import { login } from "../../services/api";
           )}
         </Formik>
           <Typography className="typoStyle">
-            <Link href="#">Forgot password</Link>
+            <Link to="/forgot">Forgot password</Link>
           </Typography>
           <Typography>
           Create a new account ?
