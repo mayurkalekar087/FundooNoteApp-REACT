@@ -1,9 +1,8 @@
 import http from "./config";
 
-export const register = (userData) => {
-  console.log(userData);
-  return http.post("/register", userData);
+export const register = (userDetails) => {
+  return http.post("/register", userDetails);
 };
-export const login = (loginData) => {
-    return http.post("/signin", loginData);
+export const login = (data) => {
+    return http.post("/login", data);
 };
