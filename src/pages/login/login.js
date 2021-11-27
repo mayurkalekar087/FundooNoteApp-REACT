@@ -79,7 +79,7 @@ import Title from "../../component/title/title";
           </Typography>
           <Typography>
           Create a new account ?
-          <Link to="/SignIn">
+          <Link to="/SignUp">
               <span> Create account </span>
             </Link>
           </Typography>
