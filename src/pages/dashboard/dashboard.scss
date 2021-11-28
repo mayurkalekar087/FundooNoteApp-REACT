@@ -1,3 +1,5 @@
+@import "..//..//global/variable.scss";
+
 .root {
     display: flex;
   }
@@ -19,7 +21,7 @@
     visibility: hidden;
     width: 60px;
     background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
+    color:$white;
     text-align: center;
     padding: 5px 0;
     opacity: 0.87;
@@ -81,7 +83,7 @@
   
   .headerTitle {
     margin: 3%;
-    color: #5f6368;
+    color:$Gray;
     font-size: x-large;
     font-family: "Pacifico";
   }
