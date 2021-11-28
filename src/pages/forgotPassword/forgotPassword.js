@@ -22,7 +22,6 @@ const Forgot = () => {
       };
       forgot(data)
         .then((res) => {
-          // alert("Data submitted");
           setTimeout(() => {
             props.resetForm();
             history.push("#");
@@ -68,7 +67,7 @@ const Forgot = () => {
                 helperText={<ErrorMessage name="Email" />}
               />
 
-<Grid container spacing={0}>
+              <Grid container spacing={0}>
                 <Grid sm={6}>
                   <Typography className="buttonStyle11 ">
                     <Link className="textDecoration" to="/SignUp">
