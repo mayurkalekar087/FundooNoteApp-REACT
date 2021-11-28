@@ -27,7 +27,6 @@ const SignUp = () => {
       };
       register(userDetails)
       .then((res) => {
-         // alert("Data submitted");
          setTimeout(() => {
             history.push("/login");
           }, 5000);

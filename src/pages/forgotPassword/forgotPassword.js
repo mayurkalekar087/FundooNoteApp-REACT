@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid, Paper, TextField, Button } from "@material-ui/core";
+import { Grid, Paper, TextField, Button,Typography } from "@material-ui/core";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./forgotPassword.scss";
 import Title from "../../component/title/title";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { forgot } from "../../services/api";
@@ -68,15 +68,24 @@ const Forgot = () => {
                 helperText={<ErrorMessage name="Email" />}
               />
 
-              <Grid container className="buttonStyle1" sm={12}>
-                <Button
-                  type="submit"
-                  color="primary"
-                  variant="contained"
-                  fullWidth
-                >
-                  Next
-                </Button>
+<Grid container spacing={0}>
+                <Grid sm={6}>
+                  <Typography className="buttonStyle11 ">
+                    <Link className="textDecoration" to="/SignUp">
+                      sign in instead ?
+                    </Link>
+                  </Typography>
+                </Grid>
+                <Grid container className="buttonStyle1" sm={6}>
+                  <Button
+                    type="submit"
+                    color="primary"
+                    variant="contained"
+                    fullWidth
+                  >
+                    Next
+                  </Button>
+                </Grid>
               </Grid>
             </Form>
           )}

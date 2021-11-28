@@ -1,3 +1,5 @@
+@import "..//..//global/variable.scss";
+
 .headerStyle {
     margin-bottom: 10px;
     margin-top: 0;
@@ -31,7 +33,7 @@
   }
   .setText {
     margin-left: 10px;
-    color: #5f6368;
+    color: $Gray;
     margin-top: -12px;
     font-size: 12px;
     margin-bottom: 10px;
@@ -39,7 +41,7 @@
   }
   .setText1 {
     margin-left: 18px;
-    color: #5f6368;
+    color: $Gray;
     margin-top: -18px;
     font-size: 12px;
     margin-bottom: 10px;

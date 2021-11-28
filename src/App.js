@@ -7,23 +7,16 @@ import Dashboard from "./pages/dashboard/dashboard";
 
 function App() {
   return (
-  //   <Router>
-  //     <Switch>
-  //     <Route path="/dashboard" component={Dashboard}/>
-  //     <Route path="/register" component={SignUp}/>
-  //     <Route path="/" component={Login}/>
-  //     </Switch>
-  // </Router>
   <Router>
   <div>
     <Switch>
-    <Route path="/forgot">
+    <Route path="/forgotPassword">
             <Forgot />
           </Route>
       <Route path="/dashboard">
         <Dashboard />
       </Route>
-      <Route path="/SignUp">
+      <Route path="/register">
         <SignUp />
       </Route>
       <Route path="/">
