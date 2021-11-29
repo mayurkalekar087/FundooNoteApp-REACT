@@ -8,4 +8,7 @@ export const login = (data) => {
 };
 export const forgot = (data) => {
     return http.post("/forgotPassword", data);
-  };
+};
+export const resetPassword = (data) => {
+  return http.post("/resetPassword", data);
+};
