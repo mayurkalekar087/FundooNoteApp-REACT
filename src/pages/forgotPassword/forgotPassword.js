@@ -24,7 +24,7 @@ const Forgot = () => {
         .then((res) => {
           setTimeout(() => {
             props.resetForm();
-            history.push("#");
+            history.push("/resetPassword");
           }, 2000);
           toast.success("Email forgot password link sent succesfully ✔", {
             position: "top-center",
@@ -94,5 +94,5 @@ const Forgot = () => {
     </Grid>
   );
 };
-
 export default Forgot;
+

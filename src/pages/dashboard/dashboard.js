@@ -219,6 +219,7 @@ export default function Dashboard(props) {
   const logOut = () => {
     setTimeout(() => {
       localStorage.removeItem("token");
+      console.log("logout :: " + localStorage.getItem("token"));
       nextPath("../login");
     }, 2000);
     toast.success("logout successfully ✔", {
