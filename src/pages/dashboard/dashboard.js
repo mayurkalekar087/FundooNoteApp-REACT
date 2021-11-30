@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-duplicate-props */
 import React from "react";
-import clsx from "clsx";
 import "./dashboard.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import clsx from "clsx";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
@@ -21,16 +21,17 @@ import DnsRoundedIcon from "@material-ui/icons/DnsRounded";
 import ReplayOutlinedIcon from "@material-ui/icons/ReplayOutlined";
 import ListItem from "@material-ui/core/ListItem";
 import InputBase from "@material-ui/core/InputBase";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import AppsRoundedIcon from "@material-ui/icons/AppsRounded";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircle";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Notes from "../../component/createNote/note";
-import ProtectedRoutes from "../../component/protectedRouter";
 import { Switch } from "react-router-dom";
+import ProtectedRoute from "../../component/protectedRouter";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -48,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
   hide: {
     display: "none",
   },
+
   iconLogo: {
     width: "1.1em",
     height: "1.1em",
@@ -190,6 +192,7 @@ export default function Dashboard(props) {
     setEditLabels(false);
     setAchive(false);
     setTrash(false);
+    nextPath("../dashboard/reminder");
   };
 
   const editLabelSelect = () => {
@@ -198,6 +201,7 @@ export default function Dashboard(props) {
     setEditLabels(true);
     setAchive(false);
     setTrash(false);
+    nextPath("../dashboard/editLabel");
   };
 
   const achiveSelect = () => {
@@ -220,14 +224,16 @@ export default function Dashboard(props) {
 
   const logOut = () => {
     setTimeout(() => {
-      localStorage.removeItem("token");
-      console.log("logout :: " + localStorage.getItem("token"));
-      nextPath("../login");
-    }, 2000);
-    toast.success("logout successfully ✔", {
-      position: "top-center",
-    });
+        localStorage.removeItem("token");
+        console.log("logout :: " + localStorage.getItem("token"));
+        nextPath("../login");
+      }, 2000);
+      toast.success("logout successfully", {
+        position: "top-center",
+      });
   };
+
+
 
   return (
     <div className="root" className={classes.root}>
@@ -237,7 +243,7 @@ export default function Dashboard(props) {
           <span className="leftOptions">
             <div className="startOptions">
               <div className="menuButton tooltip">
-                <span class="tooltiptext">menu</span>
+                <span className="tooltiptext">menu</span>
                 <IconButton
                   className={classes.appBarButton}
                   onClick={drawerOpenClose}
@@ -280,21 +286,21 @@ export default function Dashboard(props) {
                 </IconButton>
               </div>
               <div className="button tooltip ">
-                <span class="tooltiptext">Refresh</span>
+                <span className="tooltiptext">Refresh</span>
                 <IconButton className={classes.appBarButton}>
                   <ReplayOutlinedIcon className={classes.iconLogo} />
                 </IconButton>
               </div>
 
               <div className="button tooltip">
-                <span class="tooltiptext">list view</span>
+                <span className="tooltiptext">list view</span>
                 <IconButton className={classes.appBarButton}>
                   <DnsRoundedIcon className={classes.iconLogo} />
                 </IconButton>
               </div>
 
               <div className="button tooltip">
-                <span class="tooltiptext">Setting</span>
+                <span className="tooltiptext">Setting</span>
                 <IconButton
                   className={classes.appBarButton}
                   onClick={settingHandleClick}
@@ -326,7 +332,7 @@ export default function Dashboard(props) {
                 </Paper>
               </div>
             </div>
-            <div class="appsContainer">
+            <div className="appsContainer">
               <div className="button">
                 <IconButton className={classes.appBarButton}>
                   <AppsRoundedIcon className={classes.iconLogo} />
@@ -380,7 +386,7 @@ export default function Dashboard(props) {
           onMouseLeave={drawerClose}
           variant="permanent"
           color="transparent"
-          className={clsx(classes.drawer, {
+          className={(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           })}
@@ -438,7 +444,10 @@ export default function Dashboard(props) {
                 >
                   <ListItemIcon>
                     <svg width="28" height="28" viewBox="0 0 24 24">
-                      <path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path>
+                      <path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83
+                       0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.
+                       79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9
+                       .82 9.83z"></path>
                     </svg>
                   </ListItemIcon>
                   <ListItemText primary="Edit Labels" />
@@ -485,11 +494,11 @@ export default function Dashboard(props) {
 
         <main className={classes.main}>
           <div className={classes.content}>
-            <Switch>
-              <ProtectedRoutes path="/dashboard/notes">
+          <Switch>
+              <ProtectedRoute path="/dashboard/notes">
                 <Notes search={search} />
-              </ProtectedRoutes>
-            </Switch>
+              </ProtectedRoute>
+          </Switch>
           </div>
         </main>
       </div>

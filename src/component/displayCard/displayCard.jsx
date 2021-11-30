@@ -1,76 +1,53 @@
+/* eslint-disable react/style-prop-object */
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import NoteOptions from "../../component/noteOptions/noteOptions";
-// import Services from "../../Services/NotesServices";
 import Dialog from "@material-ui/core/Dialog";
 import AddNote from "../../component/createNote/addNote";
 import Typography from "@material-ui/core/Typography";
 import "./displayCard.scss";
-// const service = new Services();
 
-const useStyles = makeStyles((theme) => ({
-  dialogBox: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  dialogOptions: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "flex-start",
-  },
-  noteText: {
-    wordWrap: "break-word",
-    margin: "4px 4px 4px 4px",
-  },
-}));
 
 export default function DisplayNotes(props) {
-  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
-  var [title, setTitle] = React.useState("");
-  var [note, setNote] = React.useState("");
   const [clr, setClr] = React.useState("#fafafa");
-  const [noteId, setNoteId] = React.useState();
+  
+
+  const [noteData, setNoteData] = React.useState({ title: '', description: '', noteId: '' });
+  const [noteLabel, setNoteLabel] = React.useState({ label: '', noteId: '' });
 
   const setDelete = () => {
     dialogClose();
     setOpen(false);
   };
-
   const dialogOpen = (e, data) => {
     e.stopPropagation();
     setEdit(true);
-    setTitle(data.title);
-    setNote(data.description);
     setClr(data.color);
-    setNoteId(data.id);
+    setNoteData(data);
+    setNoteLabel(data);
+    
     setOpen(true);
   };
 
   const storeOption = (e, data) => {
     e.stopPropagation();
-    setNoteId(data);
+    setNoteData(data);
+    setNoteLabel(data);
   };
 
   const dialogClose = () => {
     setOpen(false);
   };
-
-  //   const notelist = [
-  //     { title: "title1", description: "description1" },
-  //     { title: "title2", description: "description2" },
-  //     { title: "title3", description: "description3" },
-  //   ];
+   
 
   const Note = () => {
-    console.log(" props.notes :: ", props.notes);
+    
     return (
+      <div className="row">
+      <div className="column">
       <div className="AllNotes">
-        {/* props.notes */}
-
+        
         {props.notes.length &&
           props.notes.map((data) => (
             <div
@@ -79,17 +56,22 @@ export default function DisplayNotes(props) {
               style={{ backgroundColor: data.color }}
             >
               <div className="inputBlock" onClick={(e) => dialogOpen(e, data)}>
-                <Typography className={classes.noteText}>
+                
+                <Typography className="textTitle" >
                   {data.title}
                 </Typography>
-                <Typography className={classes.noteText}>
+                <Typography className="noteText">
                   {data.description}
                 </Typography>
+                <Typography  className="noteText">
+                  {data.label}
+                </Typography>
+                
               </div>
               <div className="optionContainer">
                 <div
                   onMouseEnter={(e) => {
-                    storeOption(e, data.id);
+                    storeOption(e, data);
                     setClr(clr);
                   }}
                   onMouseOver={setEdit(true)}
@@ -97,16 +79,21 @@ export default function DisplayNotes(props) {
                 >
                   <NoteOptions
                     setDelete={setDelete}
-                    //setColor={clr}
-                    // setClr={setClr}
+                    setColor={clr}
+                    setClr={setClr}
                     editId={data._id}
+                    noteDetail={noteData}
                     setEdited={edit}
                     getall={props.getall}
+                    labelDetail={noteLabel}
                   />
+                  
                 </div>
               </div>
             </div>
           ))}
+      </div>
+      </div>
       </div>
     );
   };
@@ -123,11 +110,9 @@ export default function DisplayNotes(props) {
             dialogOff={dialogClose}
             getall={props.getall}
             editOpen={open}
-            editId={noteId}
-            editTitle={title}
-            editDisc={note}
+            noteDetail={noteData}
             editColor={clr}
-            className={classes.dialogBox}
+            labelDetail={noteLabel}
           />
         </Dialog>
       </div>

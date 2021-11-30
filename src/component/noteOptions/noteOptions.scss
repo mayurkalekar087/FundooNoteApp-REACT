@@ -2,6 +2,14 @@
     display: flex;
     flex-direction: row;
   }
+  
+  colorMenu {
+    width: "130px";
+    height: 90px;
+    display: "flex";
+    flex-flow: " column wrap";
+  }
+  
   .colorDiv {
     width: 5px;
     height: 5px;

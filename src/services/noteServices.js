@@ -1,4 +1,5 @@
 import Axios from "axios";
+
 class UserNoteServices {
     static addNote = (data) => {
         const token = localStorage.getItem("token");
