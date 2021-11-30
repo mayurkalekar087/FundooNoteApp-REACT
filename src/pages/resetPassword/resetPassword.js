@@ -1,5 +1,5 @@
 import React from "react";
-import {resetPassword} from "../../services/api";
+import Services from "../../services/noteServices";
 import Title from '../../component/title/title';
 import "./resetpassword.scss";
 import { Grid, Paper, TextField, Button } from "@material-ui/core";
@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 
-const ResetPassword = () => {
+const ResetPassword = (props) => {
 
   const initialValues = {
     password: "",
@@ -16,13 +16,13 @@ const ResetPassword = () => {
   };
   const history = useHistory();
 
-  //let token = props.match.params.token;
+  let token = props.match.params.token;
   const onSubmits = (values, props) => {
     let data = {
       password: values.password,
       confirmPassword: values.confirmPassword
     };
-    resetPassword(data)
+    Services.resetPassword(data,token)
       .then((res) => {
         setTimeout(() => {
           props.resetForm();

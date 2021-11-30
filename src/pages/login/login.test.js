@@ -10,10 +10,7 @@ describe('Login Component', () => {
     //testing the email and password input existence
     it('renders a email input', () => {
         expect(shallow( < Login /> ).find('#outlined-required').length).toEqual(1)
-      })
-      it('renders a password input', () => {
-        expect(shallow( < Login /> ).find('#outlined-adornment-password').length).toEqual(1)
-      })
+    })
 })
 describe('Email input', () => {
   //testing email input for Fundoo notes
@@ -32,7 +29,7 @@ describe('Email input', () => {
     //testing password input for Fundoo notes
     it('should respond to change event and change the state of the Login Component', () => {
       const wrapper = shallow( < Login /> );
-      wrapper.find('#outlined-adornment-password')
+      wrapper.find('#outlined-password')
         .simulate('change', {
           target: {
             name: 'password',

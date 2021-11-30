@@ -28,7 +28,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircle";
 import { useHistory } from "react-router-dom";
-
+import Notes from "../../component/createNote/note";
+import ProtectedRoutes from "../../component/protectedRouter";
+import { Switch } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -483,11 +485,11 @@ export default function Dashboard(props) {
 
         <main className={classes.main}>
           <div className={classes.content}>
-            {/* <Switch>
+            <Switch>
               <ProtectedRoutes path="/dashboard/notes">
                 <Notes search={search} />
               </ProtectedRoutes>
-            </Switch> */}
+            </Switch>
           </div>
         </main>
       </div>
