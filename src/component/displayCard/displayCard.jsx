@@ -87,7 +87,6 @@ export default function DisplayNotes(props) {
                     getall={props.getall}
                     labelDetail={noteLabel}
                   />
-                  
                 </div>
               </div>
             </div>
@@ -97,7 +96,6 @@ export default function DisplayNotes(props) {
       </div>
     );
   };
-
   return (
     <div className="mainContent">
       <div className="displayNotes">
