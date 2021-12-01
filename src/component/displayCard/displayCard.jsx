@@ -14,7 +14,6 @@ export default function DisplayNotes(props) {
   
 
   const [noteData, setNoteData] = React.useState({ title: '', description: '', noteId: '' });
-  const [noteLabel, setNoteLabel] = React.useState({ label: '', noteId: '' });
 
   const setDelete = () => {
     dialogClose();
@@ -25,7 +24,6 @@ export default function DisplayNotes(props) {
     setEdit(true);
     setClr(data.color);
     setNoteData(data);
-    setNoteLabel(data);
     
     setOpen(true);
   };
@@ -33,7 +31,6 @@ export default function DisplayNotes(props) {
   const storeOption = (e, data) => {
     e.stopPropagation();
     setNoteData(data);
-    setNoteLabel(data);
   };
 
   const dialogClose = () => {
@@ -85,7 +82,6 @@ export default function DisplayNotes(props) {
                     noteDetail={noteData}
                     setEdited={edit}
                     getall={props.getall}
-                    labelDetail={noteLabel}
                   />
                 </div>
               </div>
@@ -110,7 +106,6 @@ export default function DisplayNotes(props) {
             editOpen={open}
             noteDetail={noteData}
             editColor={clr}
-            labelDetail={noteLabel}
           />
         </Dialog>
       </div>

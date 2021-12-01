@@ -1,26 +1,24 @@
-import Axios from "axios";
-
+//import Axios from "axios";
+import http from "./config";
 class UserNoteServices {
     static addNote = (data) => {
         const token = localStorage.getItem("token");
-        return Axios.post("http://localhost:3000/createnotes", data, {
+        return http.post("http://localhost:3000/createnotes", data, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
       static getNotes = () => {
         const token = localStorage.getItem("token");
-        // console.log(token);
-        return Axios.get("http://localhost:3000/getnotes", {
+        return http.get("http://localhost:3000/getnotes", {
           headers: { Authorization: `Bearer ${token}` },
         });
       };
-
     static forgotPassword = (data) => {
-        return Axios.post("http://localhost:3000/forgotPassword", data);
+        return http.post("http://localhost:3000/forgotPassword", data);
       };
 
       static resetPassword = (data, token) => {
-        return Axios.post(`http://localhost:3000/resetpassword/${token}`, data);
+        return http.post(`http://localhost:3000/resetpassword/${token}`, data);
       };
     }
     export default UserNoteServices;

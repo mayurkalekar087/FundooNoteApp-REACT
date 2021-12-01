@@ -7,27 +7,27 @@ export default function Notes(props) {
     const [notes, setNotes] = React.useState([]);
   
     const getAllNotes = () => {
-      Services.getNotes()
-        .then((res) => {
-          const { data } = res.data;
-          let notes = data.reverse();
-          setNotes(notes);
-        })
-        .catch((err) => {
-          console.log("error = " + err);
-        });
-    };
+        Services.getNotes()
+          .then((res) => {
+            const { data } = res.data;
+            let notes = data.reverse();
+            setNotes(notes);
     
-  
-    React.useEffect(() => {
-      getAllNotes();
-    }, []);
-  
-    return (
-      <div className="mainContent" data-testId="wrapper">
-        <AddNotes getall={getAllNotes} />
-        <DisplayNotes notes={notes} getall={getAllNotes} />
-        <div></div>
-      </div>
-    );
-  }
+          })
+          .catch((err) => {
+            console.log("error = " + err);
+          });
+      };
+    
+      React.useEffect(() => {
+        getAllNotes();
+      }, []);
+    
+      return (
+        <div className="mainContent" >
+          <AddNotes getall={getAllNotes} />
+          <DisplayNotes notes={notes} getall={getAllNotes} />
+          <div></div>
+        </div>
+      );
+    }
