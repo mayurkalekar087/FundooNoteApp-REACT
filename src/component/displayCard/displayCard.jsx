@@ -37,13 +37,14 @@ export default function DisplayNotes(props) {
   };
    
   const Note = () => {
-    console.log(" props.notes :: ", props.notes);
+    console.log(" props.notes :: ", props.notes.rows);
+    console.log(props.notes.rows.length,"length")
     return (
       <div className="row">
       <div className="column">
       <div className="AllNotes">
-        {props.notes.length &&
-          props.notes.map((data) => (
+        {props.notes.rows.length &&
+          props.notes.rows.map((data) => (
             <div
               key={data._id}
               className="noteBlock"
@@ -51,6 +52,7 @@ export default function DisplayNotes(props) {
             >
               <div className="inputBlock" onClick={(e) => dialogOpen(e, data)}>
                 <Typography className="textTitle" >
+
                   {data.title}
                 </Typography>
                 <Typography className="noteText">
