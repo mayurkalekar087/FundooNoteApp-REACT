@@ -132,7 +132,6 @@ export default function Dashboard(props) {
   const [anchorE2, setAnchorE2] = React.useState(null);
   const [notes, setNotes] = React.useState(true);
   const [reminders, setReminders] = React.useState(false);
-  const [editLabels, setEditLabels] = React.useState(false);
   const [achive, setAchive] = React.useState(false);
   const [trash, setTrash] = React.useState(false);
   const [search, setSearch] = React.useState();
@@ -180,7 +179,6 @@ export default function Dashboard(props) {
   const notesSelect = () => {
     setNotes(true);
     setReminders(false);
-    setEditLabels(false);
     setAchive(false);
     setTrash(false);
     nextPath("../dashboard/notes");
@@ -189,39 +187,23 @@ export default function Dashboard(props) {
   const reminderSelect = () => {
     setNotes(false);
     setReminders(true);
-    setEditLabels(false);
-    setAchive(false);
     setTrash(false);
     nextPath("../dashboard/reminder");
   };
-
-  const editLabelSelect = () => {
-    setNotes(false);
-    setReminders(false);
-    setEditLabels(true);
-    setAchive(false);
-    setTrash(false);
-    nextPath("../dashboard/editLabel");
-  };
-
   const achiveSelect = () => {
     setNotes(false);
     setReminders(false);
-    setEditLabels(false);
     setAchive(true);
     setTrash(false);
     nextPath("../dashboard/archive");
   };
-
   const trashSelect = () => {
     setNotes(false);
     setReminders(false);
-    setEditLabels(false);
     setAchive(false);
     setTrash(true);
     nextPath("../dashboard/trash");
   };
-
   const logOut = () => {
     setTimeout(() => {
         localStorage.removeItem("token");
@@ -232,9 +214,6 @@ export default function Dashboard(props) {
         position: "top-center",
       });
   };
-
-
-
   return (
     <div className="root" className={classes.root}>
       <CssBaseline />
@@ -432,28 +411,6 @@ export default function Dashboard(props) {
                   <ListItemText primary="Reminders" />
                 </ListItem>
               </div>
-
-              <div className="drawerButton" onClick={editLabelSelect}>
-                <ListItem
-                  button
-                  className="drawerListButton"
-                  className={classes.drawerButton}
-                  style={{
-                    backgroundColor: editLabels ? "#ffe0b2" : "transparent",
-                  }}
-                >
-                  <ListItemIcon>
-                    <svg width="28" height="28" viewBox="0 0 24 24">
-                      <path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83
-                       0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.
-                       79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9
-                       .82 9.83z"></path>
-                    </svg>
-                  </ListItemIcon>
-                  <ListItemText primary="Edit Labels" />
-                </ListItem>
-              </div>
-
               <div className="drawerButton" onClick={achiveSelect}>
                 <ListItem
                   button
@@ -471,7 +428,6 @@ export default function Dashboard(props) {
                   <ListItemText primary="Archive" />
                 </ListItem>
               </div>
-
               <div className="drawerButton" onClick={trashSelect}>
                 <ListItem
                   button

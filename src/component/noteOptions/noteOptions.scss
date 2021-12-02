@@ -1,25 +1,39 @@
 .optionButtons {
+  display: flex;
+  flex-direction: row;
+}
+.colorDiv {
+  width: 5px;
+  height: 5px;
+  border: black solid 1px;
+  border-radius: 100px;
+}
+
+.optionButton {
+  width: "100%";
+};
+.colorPaper {
+  margin-left: spacing(5);
+};
+.button {
+  padding: "6px";
+};
+.colorButton {
+  margin: "2px";
+  width: "5px";
+  height: "5px";
+  hover: {
+    border: "black 2px solid",
+  };
+};
+
+.paper {
+  margin-right: spacing(2);
+};
+
+@media only screen and (max-width: 400px) {
+  .optionfield {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
   }
-  
-  colorMenu {
-    width: "130px";
-    height: 90px;
-    display: "flex";
-    flex-flow: " column wrap";
-  }
-  
-  .colorDiv {
-    width: 5px;
-    height: 5px;
-    border: black solid 1px;
-    border-radius: 100px;
-  }
-  
-  @media only screen and (max-width: 400px) {
-    .optionfield {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+}

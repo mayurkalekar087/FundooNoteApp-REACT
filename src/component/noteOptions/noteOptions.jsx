@@ -114,8 +114,6 @@ export default function NoteOptions(props) {
             <IconButton>
               <ArchiveOutlinedIcon/>
             </IconButton>
-            
-
             <IconButton onClick={deleteHandleOpen}>
               <MoreVertOutlinedIcon />
             </IconButton>
@@ -149,4 +147,5 @@ export default function NoteOptions(props) {
       </div>
     </div>
   );
+  
 }

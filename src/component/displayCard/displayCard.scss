@@ -1,78 +1,78 @@
 .noteBlock {
-    width: 300px;
-    min-height: 120px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;  
-    border: #d3d3d3 solid 1px;
-    overflow: visible;
-    border-radius: 8px;
-    margin: 1%;
-  }
+  width: 300px;
+  min-height: 120px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
+  border: #d3d3d3 solid 1px;
+  overflow: visible;
+  border-radius: 8px;
+  margin: 1%;
+}
 
-  .dialogBox {
-    display: "flex";
-    flex-direction: "column";
-    justify-content: "center";
-    align-items: "center";
-  };
-  .dialogOptions {
-    width: "100%";
-    display: "flex";
-    justify-content: "flex-start";
-  }
-  .noteText {
-    word-wrap: "break-word";
-    margin: "4px 4px 4px 4px";
-    overflow: hidden;
-    word-wrap: break-word;
-  }
- 
-  .optionContainer {
-    height: 30px;
-  }
-  .inputBlock {
-    display: flex;
-    flex-direction: column;
-  }
-  .noteOption {
-    display: none;
-    cursor: pointer;
-  }
-  .noteBlock:hover .noteOption {
-    display: block;
-  }
-  .displayText {
-    font-size: large;
-    margin: 3px 4px 4px 4px;
-  }
-  .AllNotes {
-    display: inline-flex;
-    justify-content: space-between;
-    flex-flow: wrap;
-    align-items: flex-start;
-    
-  }
-  
+.dialogBox {
+  display: "flex";
+  flex-direction: "column";
+  justify-content: "center";
+  align-items: "center";
+};
+.dialogOptions {
+  width: "100%";
+  display: "flex";
+  justify-content: "flex-start";
+}
+.noteText {
+  word-wrap: "break-word";
+  margin: "4px 4px 4px 4px";
+  overflow: hidden;
+  word-wrap: break-word;
+}
 
-  .textTitle {
-    margin: 4px !important;
-    font-weight: bold !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
-  }
-  .noteText {
-    margin: 4px !important;
-  }
+.optionContainer {
+  height: 30px;
+}
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+}
+.noteOption {
+  display: none;
+  cursor: pointer;
+}
+.noteBlock:hover .noteOption {
+  display: block;
+}
+.displayText {
+  font-size: large;
+  margin: 3px 4px 4px 4px;
+}
+.AllNotes {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  align-items: flex-start;
   
-  .addnoteNone {
-    display: none;
+}
+
+
+.textTitle {
+  margin: 4px !important;
+  font-weight: bold !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.noteText {
+  margin: 4px !important;
+}
+
+.addnoteNone {
+  display: none;
+}
+@media only screen and (max-width: 615px) {
+  .noteBlock {
+    width: 100%;
   }
-  @media only screen and (max-width: 615px) {
-    .noteBlock {
-      width: 100%;
-    }
-  }
+}

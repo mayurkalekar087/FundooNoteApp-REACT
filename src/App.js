@@ -18,7 +18,7 @@ function App() {
             component={Dashboard}
           ></ProtectedRoute>
       <Route path="/register" component={SignUp} />
-      <Route path="/resetpassword" component={resetPassword} />
+      <Route path="/resetpassword/token" component={resetPassword} />
       <Route path="/" component={Login} />
     </Switch>
   </div>

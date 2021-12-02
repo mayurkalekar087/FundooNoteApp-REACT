@@ -2,10 +2,9 @@
 import React from "react";
 import NoteOptions from "../../component/noteOptions/noteOptions";
 import Dialog from "@material-ui/core/Dialog";
-import AddNote from "../../component/createNote/addNote";
+import AddNote from "../createNote/addNote";
 import Typography from "@material-ui/core/Typography";
 import "./displayCard.scss";
-
 
 export default function DisplayNotes(props) {
   const [open, setOpen] = React.useState(false);
@@ -37,14 +36,12 @@ export default function DisplayNotes(props) {
     setOpen(false);
   };
    
-
   const Note = () => {
-    
+    console.log(" props.notes :: ", props.notes);
     return (
       <div className="row">
       <div className="column">
       <div className="AllNotes">
-        
         {props.notes.length &&
           props.notes.map((data) => (
             <div
@@ -53,17 +50,12 @@ export default function DisplayNotes(props) {
               style={{ backgroundColor: data.color }}
             >
               <div className="inputBlock" onClick={(e) => dialogOpen(e, data)}>
-                
                 <Typography className="textTitle" >
                   {data.title}
                 </Typography>
                 <Typography className="noteText">
                   {data.description}
                 </Typography>
-                <Typography  className="noteText">
-                  {data.label}
-                </Typography>
-                
               </div>
               <div className="optionContainer">
                 <div
@@ -83,6 +75,7 @@ export default function DisplayNotes(props) {
                     setEdited={edit}
                     getall={props.getall}
                   />
+                  
                 </div>
               </div>
             </div>
@@ -92,6 +85,7 @@ export default function DisplayNotes(props) {
       </div>
     );
   };
+
   return (
     <div className="mainContent">
       <div className="displayNotes">

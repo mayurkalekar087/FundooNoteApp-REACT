@@ -24,6 +24,7 @@ import { login } from "../../services/api";
     };
     login(data)
       .then((res) => {
+        console.log("request",res.data.token)
         localStorage.setItem("token", res.data.token);
         setTimeout(() => {
           history.push("/dashboard");
