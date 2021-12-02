@@ -51,7 +51,7 @@ export default function NoteOptions(props) {
 
   const deleted = () => {
     let data = {
-      id: [props.noteDetail?._id],
+      id: [props.noteDetail?.id],
     };
     Services.deleteForever(data)
       .then((data) => {
@@ -147,5 +147,4 @@ export default function NoteOptions(props) {
       </div>
     </div>
   );
-  
 }

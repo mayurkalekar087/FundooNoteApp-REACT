@@ -37,12 +37,12 @@ export default function AddNote(props) {
    const formval = {
     title: noteData?.title,
     description: noteData?.description,
-    id: [noteData?._id]
+    id: [noteData?.id]
     };
     if (!edit) {
     Services.addNote(formval)
       .then((data) => {
-        toast.success("Notes created");
+        toast.success("Notes created successfully");
         titleDisplay(false);
         resetHandler(); 
         props.getall();
@@ -50,27 +50,23 @@ export default function AddNote(props) {
       .catch((err) => {
         toast.error("Note not created");
       });
-
       }
-      
       else {
-      Services
-        .updateNotes(formval)
+        console.log(formval,"formval")
+      Services.updateNotes(formval)
         .then((data) => {
+          console.log("updateNote",data);
           props.getall();
+          console.log(formval,"formval")
         })
         .catch((err) => {
           console.log(err)
         });
-        
       titleDisplay(false);
       props.dialogOff();
     } 
-    
-    };
-
+  };
   return (
-  
     <div
       data-testid="close"
       className="addNotesMain"

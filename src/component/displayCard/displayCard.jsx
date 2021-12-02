@@ -35,24 +35,22 @@ export default function DisplayNotes(props) {
   const dialogClose = () => {
     setOpen(false);
   };
-   
   const Note = () => {
     console.log(" props.notes :: ", props.notes.rows);
-    console.log(props.notes.rows.length,"length")
+    //console.log(props.notes.rows.length,"length")
     return (
       <div className="row">
       <div className="column">
       <div className="AllNotes">
-        {props.notes.rows.length &&
+        {props.notes.rows &&
           props.notes.rows.map((data) => (
             <div
-              key={data._id}
+              key={data.id}
               className="noteBlock"
               style={{ backgroundColor: data.color }}
             >
               <div className="inputBlock" onClick={(e) => dialogOpen(e, data)}>
                 <Typography className="textTitle" >
-
                   {data.title}
                 </Typography>
                 <Typography className="noteText">
@@ -72,7 +70,7 @@ export default function DisplayNotes(props) {
                     setDelete={setDelete}
                     setColor={clr}
                     setClr={setClr}
-                    editId={data._id}
+                    editId={data.id}
                     noteDetail={noteData}
                     setEdited={edit}
                     getall={props.getall}

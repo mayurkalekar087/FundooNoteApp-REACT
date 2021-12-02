@@ -15,6 +15,7 @@ class UserNoteServices {
       };
       static updateNotes = ( data) => {
         const token = localStorage.getItem("token");
+        console.log("updateToken ::", token);
         return Axios.put(`http://localhost:3000/updatenotes/${data.id}`, data, {
           headers: { Authorization: `Bearer ${token}` },
         });
