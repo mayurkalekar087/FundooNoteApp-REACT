@@ -39,7 +39,6 @@ export default function AddNote(props) {
     description: noteData?.description,
     id: noteData?.note_id
     };
-    console.log(formval,"formval create")
     if (!edit) {
     Services.addNote(formval)
       .then((data) => {
@@ -53,14 +52,14 @@ export default function AddNote(props) {
       });
       }
       else {
-        console.log(formval,"formval id")
         Services.updateNotes(formval)
         .then((data) => {
+          toast.success("Notes Updated successfully");
           props.getall();
-          console.log(formval,"formval")
         })
         .catch((err) => {
           console.log(err)
+          toast.error("Note not updated");
         });
       titleDisplay(false);
       props.dialogOff();

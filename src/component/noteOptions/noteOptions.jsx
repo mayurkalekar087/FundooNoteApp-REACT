@@ -14,6 +14,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import Services from "../../services/noteServices";
 import "./noteOptions.scss";
+import { toast, ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NoteOptions(props) {
   const [open] = React.useState(false);
@@ -55,6 +57,7 @@ export default function NoteOptions(props) {
     };
     Services.deleteForever(data)
       .then((data) => {
+        toast.success("Notes Deleted successfully");
         props.getall();
       })
       .catch((err) => {
@@ -144,6 +147,7 @@ export default function NoteOptions(props) {
           </Menu>
         </Paper>
       </div>
+      <ToastContainer />
     </div>
   );
 }

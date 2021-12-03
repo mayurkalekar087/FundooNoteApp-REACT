@@ -70,7 +70,7 @@ const Forgot = () => {
               <Grid container spacing={0}>
                 <Grid sm={6}>
                   <Typography className="buttonStyle11 ">
-                    <Link className="textDecoration" to="/SignUp">
+                    <Link className="textDecoration" to="/login">
                       sign in instead ?
                     </Link>
                   </Typography>

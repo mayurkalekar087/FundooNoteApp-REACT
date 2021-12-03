@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core";
 import "./signUp.scss";
 import * as Yup from "yup";
-import { BrowserRouter as Router} from 'react-router-dom'
+//import { BrowserRouter} from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link,useHistory } from "react-router-dom";
 import Title from "../../component/title/title";
@@ -55,7 +55,6 @@ const SignUp = () => {
       .required("Password is required"),
   });
   return (
-    <Router>
     <Grid className="display-center">
       <Paper elevation={20} className="paperStyleSignUP">
         <Grid container spacing={2}>
@@ -181,7 +180,6 @@ const SignUp = () => {
       </Paper>
       <ToastContainer />
     </Grid>
-    </Router>
   );
 };
 export default SignUp;
