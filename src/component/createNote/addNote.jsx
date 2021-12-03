@@ -37,8 +37,9 @@ export default function AddNote(props) {
    const formval = {
     title: noteData?.title,
     description: noteData?.description,
-    id: [noteData?.id]
+    id: noteData?.note_id
     };
+    console.log(formval,"formval create")
     if (!edit) {
     Services.addNote(formval)
       .then((data) => {
@@ -52,10 +53,9 @@ export default function AddNote(props) {
       });
       }
       else {
-        console.log(formval,"formval")
-      Services.updateNotes(formval)
+        console.log(formval,"formval id")
+        Services.updateNotes(formval)
         .then((data) => {
-          console.log("updateNote",data);
           props.getall();
           console.log(formval,"formval")
         })

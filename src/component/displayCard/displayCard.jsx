@@ -36,7 +36,7 @@ export default function DisplayNotes(props) {
     setOpen(false);
   };
   const Note = () => {
-    console.log(" props.notes :: ", props.notes.rows);
+    //console.log(" props.notes :: ", props.notes.rows);
     //console.log(props.notes.rows.length,"length")
     return (
       <div className="row">
@@ -45,7 +45,7 @@ export default function DisplayNotes(props) {
         {props.notes.rows &&
           props.notes.rows.map((data) => (
             <div
-              key={data.id}
+              key={data.note_id}
               className="noteBlock"
               style={{ backgroundColor: data.color }}
             >
@@ -70,7 +70,7 @@ export default function DisplayNotes(props) {
                     setDelete={setDelete}
                     setColor={clr}
                     setClr={setClr}
-                    editId={data.id}
+                    editId={data.note_id}
                     noteDetail={noteData}
                     setEdited={edit}
                     getall={props.getall}

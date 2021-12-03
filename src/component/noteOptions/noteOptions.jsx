@@ -51,7 +51,7 @@ export default function NoteOptions(props) {
 
   const deleted = () => {
     let data = {
-      id: [props.noteDetail?.id],
+      id: [props.noteDetail?.note_id],
     };
     Services.deleteForever(data)
       .then((data) => {
@@ -60,7 +60,6 @@ export default function NoteOptions(props) {
       .catch((err) => {
       });
   };
-
   const colorsHandleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
