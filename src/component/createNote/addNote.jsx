@@ -3,12 +3,12 @@
 import React, { useEffect } from 'react';
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import NoteOptions from "../noteOptions/noteOptions";
 import Services from "../../services/noteServices";
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 import "./addNote.scss";
-
 
 export default function AddNote(props) {
 
@@ -42,34 +42,33 @@ export default function AddNote(props) {
     if (!edit) {
     Services.addNote(formval)
       .then((data) => {
-        toast.success("Notes created successfully");
         titleDisplay(false);
         resetHandler(); 
         props.getall();
       })
       .catch((err) => {
-        toast.error("Note not created");
       });
       }
       else {
         Services.updateNotes(formval)
         .then((data) => {
-          toast.success("Notes Updated successfully");
           props.getall();
         })
         .catch((err) => {
           console.log(err)
-          toast.error("Note not updated");
         });
       titleDisplay(false);
       props.dialogOff();
     } 
   };
   return (
-    <div
+    <ClickAwayListener onClickAway={closeNote}>
+      <div
       data-testid="close"
       className="addNotesMain"
-      onClickAway={closeNote}
+      //onClickAway={clickedNote}
+      //onClickAway = {closeNote}
+      //onClick={closeNote}
       style={{ backgroundColor: clr }}
     >
       <div className="notesField" onClick={clickedNote}>
@@ -135,5 +134,6 @@ export default function AddNote(props) {
         </div>
       </div>
     </div>
+    </ClickAwayListener>
   );
 }

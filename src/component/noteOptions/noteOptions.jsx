@@ -73,8 +73,6 @@ export default function NoteOptions(props) {
 
   const passColor = (e, colr) => {};
 
-
-
   const restore = () => {};
 
   const ColorBlock = () => {

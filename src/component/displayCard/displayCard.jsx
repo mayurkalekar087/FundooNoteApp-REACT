@@ -75,7 +75,6 @@ export default function DisplayNotes(props) {
                     setEdited={edit}
                     getall={props.getall}
                   />
-                  
                 </div>
               </div>
             </div>
